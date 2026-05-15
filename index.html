@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liiketoiminnan Työkalupakki — B2B IT & Tietoturva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f6f2;
+  --paper: #ffffff;
+  --ink: #161513;
+  --ink-soft: #46433d;
+  --ink-mute: #807a70;
+  --line: #e3dfd6;
+  --line-strong: #c9c3b5;
+  --accent: #1a1916;
+  --hi: #f0ece2;
+  --serif: "IBM Plex Serif", Georgia, serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 60px 56px 120px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 0 0 30px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section__title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 10px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.field__hint {
+  font-size: 12.5px;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.12s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--ink);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  font-family: inherit;
+}
+
+button:hover {
+  background: var(--hi);
+  border-color: var(--ink-soft);
+}
+
+button[type="submit"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+button[type="submit"]:hover {
+  background: #000;
+  border-color: #000;
+}
+
+.success-msg {
+  display: none;
+  padding: 16px;
+  background: #e8f5e9;
+  border: 1px solid #4caf50;
+  border-radius: 2px;
+  color: #2e7d32;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.success-msg.show {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1 class="title">Liiketoiminnan Työkalupakki</h1>
+    <p class="subtitle">General - Brandin ja asiakasymmärryksen taustakysely</p>
+  </div>
+
+  <div id="successMsg" class="success-msg">
+    ✓ Kiitos! Vastaukset lähetetty onnistuneesti.
+  </div>
+
+  <form id="surveyForm" action="https://formspree.io/f/xeenbnzz" method="POST">
+    <!-- KOHDEYRITYKSEEN LIITTYVÄT KYSYMYKSET -->
+    <div class="section">
+      <h2 class="section__title">01 Yritys & Konteksti</h2>
+      
+      <div class="field">
+        <label class="field__label">Yrityksen nimi</label>
+        <input type="text" name="company_name" placeholder="Kirjoita yrityksen nimi">
+      </div>
+
+      <div class="field">
+        <label class="field__label">Kontaktin nimi</label>
+        <input type="text" name="contact_name" placeholder="Kirjoita nimesi">
+      </div>
+
+      <div class="field">
+        <label class="field__label">Sähköpostiosoite</label>
+        <input type="text" name="email" placeholder="you@company.com">
+      </div>
+
+      <div class="field">
+        <label class="field__label">Yrityksen koko</label>
+        <select name="company_size">
+          <option value="">— valitse —</option>
+          <option value="startup">Startup (1–10 hlöä)</option>
+          <option value="small">Pieni (11–50 hlöä)</option>
+          <option value="medium">Keskisuuri (51–250 hlöä)</option>
+          <option value="large">Suuri (250+ hlöä)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- BRANDIN TAUSTAKYSYMYKSET -->
+    <div class="section">
+      <h2 class="section__title">02 Brandin tausta</h2>
+      
+      <div class="field">
+        <label class="field__label">Mikä on brandi tällä hetkellä?</label>
+        <div class="field__hint">Kuvaile lyhyesti nykyinen brandin asema, arvo ja näkyvyys</div>
+        <textarea name="current_brand" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Mikä haasteen tai ongelman kanssa kamppailee brandi?</label>
+        <div class="field__hint">Mitkä tekijät rajoittavat kasvua tai erottuvuutta?</div>
+        <textarea name="brand_challenges" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Mitä brandilta halutaan lähivuosina?</label>
+        <div class="field__hint">Kuvaa tavoitteet ja toivot seuraavien 12–24 kuukauden aikana</div>
+        <textarea name="brand_goals" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+    </div>
+
+    <!-- ASIAKASYMMÄRRYS -->
+    <div class="section">
+      <h2 class="section__title">03 Asiakasymmärrys</h2>
+      
+      <div class="field">
+        <label class="field__label">Kuka on pääasiallinen kohdeasia?</label>
+        <div class="field__hint">Kerro taustatiedot, roolit ja painopisteet</div>
+        <textarea name="target_customer" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Mitä asiakaat arvostavat ja miksi he valitsevat teidät?</label>
+        <div class="field__hint">Mitkä ovat perustavat asiakkaan ostopäätökseen vaikuttavat tekijät?</div>
+        <textarea name="customer_values" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Mitkä ovat asiakkaiden suurimmat haasteet tai tarpeet?</label>
+        <textarea name="customer_pain_points" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+    </div>
+
+    <!-- STRATEGIA JA KONKREETTI -->
+    <div class="section">
+      <h2 class="section__title">04 Strategia & Konkreetti</h2>
+      
+      <div class="field">
+        <label class="field__label">Miten kilpailijat asemoituvat?</label>
+        <div class="field__hint">Kuka on kilpailijoista, mitä he tarjoavat ja miten te erottutte?</div>
+        <textarea name="competitors" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Mitä kanavia ja muotoja käytätte asiakkaisiin?</label>
+        <div class="field__hint">Mitkä ovat tärkeimmät kommunikointi- ja myyntikanavat?</div>
+        <textarea name="channels" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Vapaa sana</label>
+        <div class="field__hint">Jos haluat lisätä jotain muuta, joka on relevanttia brandi- ja asiakasymmärrykseen</div>
+        <textarea name="additional_notes" placeholder="Kirjoita vastauksesi tähän..."></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Lähetä vastaukset</button>
+      <button type="reset">Tyhjennä lomake</button>
+    </div>
+  </form>
+</div>
+
+<script>
+document.getElementById('surveyForm').addEventListener('submit', function(e) {
+  // Formspree hoitaa lähettämisen
+  // Näytetään onnistumisviesti kun sivu latautuu uudelleen
+  const successMsg = sessionStorage.getItem('surveySuccess');
+  if (successMsg) {
+    document.getElementById('successMsg').classList.add('show');
+    sessionStorage.removeItem('surveySuccess');
+  }
+});
+
+// Formspree-integraatio: näytä viesti onnistumisen jälkeen
+window.addEventListener('message', function(event) {
+  if (event.data === 'formspree:success') {
+    sessionStorage.setItem('surveySuccess', 'true');
+    document.getElementById('successMsg').classList.add('show');
+  }
+});
+</script>
+
+</body>
+</html>
